@@ -1,0 +1,14 @@
+body {
+    background-image: url(../../assets/images/Game-of-Thrones.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+}
+
+#wins {
+    color: green;
+}
+
+#losses {
+    color: red;
+}
