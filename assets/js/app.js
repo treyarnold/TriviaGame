@@ -14,11 +14,12 @@ const trivia = [{question: "What house commited the massacre known as the Red We
 
 const game = {
     questions: [],
-    questionNumber: 0,
+    questionNumber: -1,
+    timer: 10,
 
     reset: function () {
         this.questions = trivia;
-        this.questionNumber = 0;
+        this.questionNumber = -1;
         this.nextQuestion();
     },
 
@@ -46,16 +47,59 @@ const game = {
                         ${currentQuestion.options[3]}
                     </div>                        
                 </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <span>Time Remaining: </span>
+                <span id="timer">10</span>
             </div>`;
             return display
         },
+
+    correct: function () {
+        console.log("correct")
+    },
+
+    incorrect: function () {
+        console.log("incorrect")
+    },
+
+    timeout: function () {
+        let display = 
+            `<hr>
+            <div class="container">
+                <div class="row">
+                    <p class="display-2 text-danger">Time's up</p>
+                </div>
+                <div class="row mt-5">
+                    <p>The correct answer was ${currentQuestion.correct}
+                </div>
+            </div>`;
+        $("#question").html(display);
+        setTimeout(this.nextQuestion, 5000);
+    },
         
     nextQuestion: function () {
-        currentQuestion = this.questions[this.questionNumber];
-        $("#question").html(this.questionFormat(currentQuestion));
+        game.questionNumber++;
+        currentQuestion = game.questions[game.questionNumber];
+        game.timer = 10;
+        $("#question").html(game.questionFormat(currentQuestion));
+        let interval = setInterval(()=>{
+            if (game.timer > 0){
+                game.timer--;
+                $("#timer").text(game.timer);
+            } else {
+                clearInterval(interval);
+                game.timeout(currentQuestion);
+            }
+        }, 1000);
         $(".option").on("click", function(event) {
-            if (event.target.innerText === currentQuestion.correct) console.log("correct")
-            else console.log ("dumbass");
+            clearInterval(interval);
+            if (event.target.innerText === currentQuestion.correct) {
+                game.correct();
+            } else {
+                game.incorrect();
+            }
         })
     }
 }

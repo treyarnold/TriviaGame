@@ -40,7 +40,7 @@ hr {
     background-color: rgb(61, 131, 131);
 }
 
-@media screen and (min-width:700px) {
+@media screen and (min-width:768px) {
     #currentQuestion{
         font-size: 2rem;
     }
@@ -49,6 +49,10 @@ hr {
         margin: 1rem;
         padding: 2.5rem;
         background-color: rgb(139, 139, 236);
+        font-size: 2rem;
+    }
+    
+    p {
         font-size: 2rem;
     }
 }
