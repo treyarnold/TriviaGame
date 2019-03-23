@@ -13,5 +13,10 @@ const trivia = [{question: "What house commited the massacre known as the Red We
             ]
 
 const game = {
-    
+    questions: [],
+
 }
+
+$("#begin").on("click", function(){
+    game.questions = trivia;
+});

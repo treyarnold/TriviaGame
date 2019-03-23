@@ -3,12 +3,22 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: black;
+    padding-top: 100px;
 }
 
-#wins {
+#correct {
     color: green;
 }
 
-#losses {
+#incorrect {
     color: red;
+}
+
+.container {
+    margin-top: 200px;
+    border-radius: 25px;
+}
+
+hr {
+    color: white;
 }
