@@ -14,11 +14,41 @@ body {
     color: red;
 }
 
-.container {
+main {
     margin-top: 200px;
     border-radius: 25px;
 }
 
 hr {
-    color: white;
+    border: solid 1px rgb(158, 158, 158);
+}
+
+.center {
+    text-align: center;
+}
+
+
+.option {
+    margin: 1rem;
+    padding: 1.5rem;
+    background-color: rgb(139, 139, 236);
+    border: 3px solid blue;
+}
+
+.option:hover {
+    border: 3px solid white;
+    background-color: rgb(61, 131, 131);
+}
+
+@media screen and (min-width:700px) {
+    #currentQuestion{
+        font-size: 2rem;
+    }
+    
+    .option {
+        margin: 1rem;
+        padding: 2.5rem;
+        background-color: rgb(139, 139, 236);
+        font-size: 2rem;
+    }
 }

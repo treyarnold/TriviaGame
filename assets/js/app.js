@@ -14,9 +14,52 @@ const trivia = [{question: "What house commited the massacre known as the Red We
 
 const game = {
     questions: [],
+    questionNumber: 0,
 
+    reset: function () {
+        this.questions = trivia;
+        this.questionNumber = 0;
+        this.nextQuestion();
+    },
+
+    questionFormat: function (currentQuestion) {
+        $("#questionTitle").text(`Question: ${this.questionNumber + 1}`)
+        let display = 
+            `<hr>
+            <div class="container">
+                <div class="row" id="currentQuestion">
+                    <p>${currentQuestion.question}</p>
+                </div>
+                <div class="row justify-content-around" id="options">
+                    <div class="col-md-5 option" id="option0">
+                        ${currentQuestion.options[0]}
+                    </div>
+                    <div class="col-md-5 option" id="option1">
+                        ${currentQuestion.options[1]}
+                    </div>                        
+                </div>
+                <div class="row justify-content-around" id="options">
+                    <div class="col-md-5 option" id="option2">
+                        ${currentQuestion.options[2]}
+                    </div>
+                    <div class="col-md-5 option" id="option3">
+                        ${currentQuestion.options[3]}
+                    </div>                        
+                </div>
+            </div>`;
+            return display
+        },
+        
+    nextQuestion: function () {
+        currentQuestion = this.questions[this.questionNumber];
+        $("#question").html(this.questionFormat(currentQuestion));
+        $(".option").on("click", function(event) {
+            if (event.target.innerText === currentQuestion.correct) console.log("correct")
+            else console.log ("dumbass");
+        })
+    }
 }
 
 $("#begin").on("click", function(){
-    game.questions = trivia;
+    game.reset();
 });
