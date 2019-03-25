@@ -38,13 +38,13 @@ const game = {
     incorrectCount: 0,
 
     reset: function () {
-        this.questions = trivia;
-        this.questionNumber = -1;
-        this.correctCount = 0;
-        this.incorrectCount = 0;
-        $("#correct").text(this.correctCount);
-        $("#incorrect").text(this.incorrectCount);
-        this.nextQuestion();
+        game.questions = trivia;
+        game.questionNumber = -1;
+        game.correctCount = 0;
+        game.incorrectCount = 0;
+        $("#correct").text(game.correctCount);
+        $("#incorrect").text(game.incorrectCount);
+        game.nextQuestion();
     },
 
     questionFormat: function (currentQuestion) {
@@ -103,12 +103,12 @@ const game = {
         let display = 
         `<hr>
         <div class="container text-center">
-        <div class="row">
-        <p class="display-2 text-danger text-center">Wrong one, Dumbass</p>
-        </div>
-        <div class="row mt-5 text-center">
-        <p>The correct answer was ${currentQuestion.correct}
-        </div>
+            <div class="row">
+                <p class="display-2 text-danger text-center">Wrong one, Dumbass</p>
+            </div>
+            <div class="row mt-5 text-center">
+                <p>The correct answer was ${currentQuestion.correct}
+            </div>
         </div>`;
         $("#question").html(display);
         game.incorrectCount++;
@@ -134,26 +134,26 @@ const game = {
     },
 
     gameover: function () {
-        $("#questionTitle").text(`Game Over}`)
+        $("#questionTitle").text(`Game Over`)
         let display = 
             `<hr>
             <div class="container">
                 <div class="row"n">
-                    <p>Here is how you did:}</p>
+                    <p>Here is how you did:</p>
                 </div>
                 <div class="row justify-content-around" id="options">
-                    <div class="col-md-5 option">
+                    <div class="col-md-5">
                         Correct:
                     </div>
-                    <div class="col-md-5 option text-success">
+                    <div class="col-md-5 text-success">
                         ${game.correctCount}
                     </div>                        
                 </div>
                 <div class="row justify-content-around">
-                    <div class="col-md-5 option">
+                    <div class="col-md-5">
                         Incorrect:
                     </div>
-                    <div class="col-md-5 option text-danger">
+                    <div class="col-md-5 text-danger">
                         ${game.incorrectCount}
                     </div>                        
                 </div>
@@ -164,14 +164,16 @@ const game = {
             </div>`;
         console.log("game over");
         $("#question").html(display);
-        $("#playAgain").on("click", game.reset());
+        console.log(display);
+        $("#playAgain").on("click", game.reset);
+        // game.reset();
     },
     
     nextQuestion: function () {
         game.questionNumber++;
         if (game.questionNumber === 10) {
             console.log("if gameover");
-            game.gameover();
+            return game.gameover();
         }
         currentQuestion = game.questions[game.questionNumber];
         game.timer = 10;
