@@ -30,9 +30,10 @@ hr {
 
 .option {
     margin: .5rem;
-    padding: 1rem;
+    padding: .5rem;
     background-color: rgb(139, 139, 236);
     border: 3px solid blue;
+    text-align: center;
 }
 
 .option:hover {

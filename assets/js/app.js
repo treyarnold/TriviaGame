@@ -77,18 +77,18 @@ const game = {
                 <span>Time Remaining: </span>
                 <span id="timer">10</span>
             </div>`;
-            return display
+        return display
         },
 
     correct: function () {
-        console.log("correct")
         let display = 
             `<hr>
             <div class="container text-center">
                 <div class="row">
-                    <p class="display-2 text-success">Correct!!</p>
+                    <p class="display-2 d-none d-md-blocktext-success">Correct!!</p>
+                    <p class="display-4 d-md-none text-success">Correct!!</p>
                 </div>
-                <div class="row mt-5 text-center">
+                <div class="row mt-5">
                     <p>The correct answer was ${currentQuestion.correct}
                 </div>
             </div>`;
@@ -99,17 +99,17 @@ const game = {
     },
     
     incorrect: function () {
-        console.log("incorrect")
         let display = 
-        `<hr>
-        <div class="container text-center">
-            <div class="row">
-                <p class="display-2 text-danger text-center">Wrong one, Dumbass</p>
-            </div>
-            <div class="row mt-5 text-center">
-                <p>The correct answer was ${currentQuestion.correct}
-            </div>
-        </div>`;
+            `<hr>
+            <div class="container text-center">
+                <div class="row">
+                    <p class="display-2 d-none d-md-block text-danger text-center">Wrong one, Dumbass</p>
+                    <p class="display-4 d-md-none text-danger text-center">Wrong one, Dumbass</p>
+                </div>
+                <div class="row mt-5">
+                    <p>The correct answer was ${currentQuestion.correct}
+                </div>
+            </div>`;
         $("#question").html(display);
         game.incorrectCount++;
         $("#incorrect").text(game.incorrectCount);
@@ -118,15 +118,16 @@ const game = {
     
     timeout: function () {
         let display = 
-        `<hr>
-        <div class="container">
-        <div class="row">
-        <p class="display-2 text-danger text-center">Time's up</p>
-        </div>
-        <div class="row mt-5 text-center">
-        <p>The correct answer was ${currentQuestion.correct}
-        </div>
-        </div>`;
+            `<hr>
+            <div class="container">
+                <div class="row">
+                    <p class="display-2 text-danger d-none d-md-block text-center">Time's up</p>
+                    <p class="display-4 text-danger d-md-none text-center">Time's up</p>
+                </div>
+                <div class="row mt-5">
+                    <p>The correct answer was ${currentQuestion.correct}
+                </div>
+            </div>`;
         $("#question").html(display);
         game.incorrectCount++;
         $("#incorrect").text(game.incorrectCount);
@@ -162,17 +163,13 @@ const game = {
             <div class="text-center">
                 <button id="playAgain">Play Again?</button>
             </div>`;
-        console.log("game over");
         $("#question").html(display);
-        console.log(display);
         $("#playAgain").on("click", game.reset);
-        // game.reset();
     },
     
     nextQuestion: function () {
         game.questionNumber++;
         if (game.questionNumber === 10) {
-            console.log("if gameover");
             return game.gameover();
         }
         currentQuestion = game.questions[game.questionNumber];
@@ -195,7 +192,6 @@ const game = {
                 game.incorrect();
             }
         })
-        console.log(game.questionNumber);
     }
 }
 
