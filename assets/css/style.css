@@ -15,7 +15,7 @@ body {
 }
 
 main {
-    margin-top: 200px;
+    /* margin-top: 60px; */
     border-radius: 25px;
 }
 
@@ -29,7 +29,7 @@ hr {
 
 
 .option {
-    margin: 1rem;
+    margin: .5rem;
     padding: 1.5rem;
     background-color: rgb(139, 139, 236);
     border: 3px solid blue;
@@ -43,6 +43,10 @@ hr {
 @media screen and (min-width:768px) {
     #currentQuestion{
         font-size: 2rem;
+    }
+    
+    #questionDiv {
+        padding: 2rem;
     }
     
     .option {

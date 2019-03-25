@@ -11,7 +11,8 @@
 </head>
 <body>
     <nav class="navbar navbar-expand fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Game of Thrones Trivia</a>
+        <a class="navbar-brand d-none d-md-block" href="#">Game of Thrones Trivia</a>
+        <a class="navbar-brand d-md-none" href="#">GoT Trivia</a>
         <div class="navbar-nav ml-auto">
             <li class="nav-item nav-link">Correct</li>
             <li class="nav-item nav-link" id="correct">0</li>
@@ -20,7 +21,7 @@
         </div>
     </nav>
 
-    <main class="container bg-dark mt-5 p-4 text-white">
+    <main class="container bg-dark text-white">
         <div class="row flex-column" id="questionDiv">
             <h1 class="text-center" id="questionTitle">Welcome to Game of Thrones Trivia</h1>
             <div id="question">
