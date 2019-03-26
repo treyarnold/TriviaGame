@@ -28,6 +28,36 @@ const trivia = [{question: "What house commited the massacre known as the Red We
                 {question: "Who has not served Daenerys Targaryen?",
                 correct: "Jeor Mormont",
                 options: ["Tyrion Lanniser", "Jeor Mormont", "Doreah", "Barristan Selmy"]},
+                {question: "In what city did Daenerys meet Khal Drogo?",
+                correct: "Pentos",
+                options: ["Pentos", "Braavos", "Qarth", "Volantis"]},
+                {question: "What region does Sam Tarly come from?",
+                correct: "Highgarden",
+                options: ["Riverlands", "North", "Stormlands", "Highgarden"]},
+                {question: "When Jon Snow finds the direwolf pups, what had killed their mother?",
+                correct: "A stag",
+                options: ["A hunter", "A stag", "The cold", "A bear"]},
+                {question: "During the Battle of Blackwater, who rallied the defenders of King's Landing?",
+                correct: "Tyrion",
+                options: ["Tywin", "Joffrey", "Tyrion", "Jamie"]},
+                {question: "Who did Rob Stark capture in battle?",
+                correct: "Jamie",
+                options: ["Tywin", "Joffrey", "Tyrion", "Jamie"]},
+                {question: "What was the name of Rob Stark's wolf?",
+                correct: "Grey Wind",
+                options: ["Summer", "Grey Wind", "Shaggy Dog", "Lady"]},
+                {question: "Where does Sam go to learn to be a Maester?",
+                correct: "Oldtown",
+                options: ["Oldtown", "Pentos", "Casterly Rock", "Qarth"]},
+                {question: "What brother of King Robert goes north to protect the wall?",
+                correct: "Stanis",
+                options: ["Renly", "Eddard", "Tywin", "Stanis"]},
+                {question: "Who was Reek?",
+                correct: "Theon",
+                options: ["Theon", "Stanis", "Gendry", "Hot Pie"]},
+                {question: "Who does Daenerys banish for spying on her?",
+                correct: "Jorah Mormont",
+                options: ["Melisandre", "Barristan Selmy", "Jorah Mormont", "Tyrion Lannister"]},
             ]
 
 const game = {
@@ -38,7 +68,16 @@ const game = {
     incorrectCount: 0,
 
     reset: function () {
-        game.questions = trivia;
+        game.questions = [];
+        // for (let i=0; i<10; i++) game.questions.push(trivia[i]);
+        while (game.questions.length < 10) {
+            number = Math.floor(Math.random() * trivia.length);
+            console.log(number, trivia[number]);
+            console.log (game.questions.indexOf(trivia[number]));
+            console.log ((game.questions.indexOf(trivia[number]) >= 0));
+            if (!(game.questions.indexOf(trivia[number]) >= 0)) game.questions.push(trivia[number])
+        }
+        console.log(game.questions.length);
         game.questionNumber = -1;
         game.correctCount = 0;
         game.incorrectCount = 0;
@@ -73,8 +112,8 @@ const game = {
                 </div>
             </div>
             <hr>
-            <div class="text-center">
-                <span>Time Remaining: </span>
+            <div class="d-flex justify-content-center align-items-center">
+                <span class="mr-3">Time Remaining: </span>
                 <span id="timer">10</span>
             </div>`;
         return display
@@ -85,7 +124,7 @@ const game = {
             `<hr>
             <div class="container text-center">
                 <div class="row">
-                    <p class="display-2 d-none d-md-blocktext-success">Correct!!</p>
+                    <p class="display-2 d-none d-md-block text-success">Correct!!</p>
                     <p class="display-4 d-md-none text-success">Correct!!</p>
                 </div>
                 <div class="row mt-5">
